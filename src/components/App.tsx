@@ -1,5 +1,10 @@
-import "./App.css";
+import {CocktailProvider} from "../contexts/CocktailContext.tsx";
+import LandingPage from "./LandingPage.tsx";
 
 export function App() {
-  return <>This is the App Component!</>;
+    return (
+        <CocktailProvider>
+            <LandingPage/>
+        </CocktailProvider>
+    );
 }
