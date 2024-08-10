@@ -2,7 +2,7 @@ import React from "react";
 import {useCocktail} from "../hooks/useCocktail.ts";
 
 const LandingPage: React.FC = () => {
-    const {cocktail, loading} = useCocktail();
+    const {cocktail, loading, setTrigger} = useCocktail();
 
     if (loading) {
         return <div>Loading...</div>;
@@ -11,9 +11,10 @@ const LandingPage: React.FC = () => {
     }
 
     return (
-        <div>
+        <div className="landing-page">
             <h1>{cocktail.strDrink}</h1>
             <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink}/>
+            <button onClick={() => setTrigger(prev => !prev)}>Get another drink</button>
         </div>
     );
 };
