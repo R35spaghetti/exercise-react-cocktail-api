@@ -1,13 +1,13 @@
 export interface IDrink
 {
-    id: number;
-    name: string;
-    tags: string;
-    category: string;
-    type: string;
-    alcoholic: string;
-    glass: string;
-    instructions: string;
-    image: string;
-    measurement: string;
+    idDrink: number;
+    strDrink: string;
+    strTags: string;
+    strCategory: string;
+    strIBA: string;
+    strAlcoholic: string;
+    strGlass: string;
+    strInstructions: string;
+    strDrinkThumb: string;
+    strMeasurement1: string;
 }
