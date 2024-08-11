@@ -2,19 +2,19 @@ import React from "react";
 import {useCocktail} from "../hooks/useCocktail.ts";
 
 const LandingPage: React.FC = () => {
-    const {cocktail, loading, setTrigger} = useCocktail();
+    const {randomCocktail, randomLoading, setRandomTrigger} = useCocktail();
 
-    if (loading) {
+    if (randomLoading) {
         return <div>Loading...</div>;
-    } else if (!cocktail) {
+    } else if (!randomCocktail) {
         return <div>No cocktail found</div>
     }
 
     return (
         <article className="landing-page">
-            <h1>{cocktail.strDrink}</h1>
-            <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink}/>
-            <button onClick={() => setTrigger(prev => !prev)}>Get another drink</button>
+            <h1>{randomCocktail.strDrink}</h1>
+            <img src={randomCocktail.strDrinkThumb} alt={randomCocktail.strDrink}/>
+            <button onClick={() => setRandomTrigger(prev => !prev)}>Get another drink</button>
         </article>
     );
 };
