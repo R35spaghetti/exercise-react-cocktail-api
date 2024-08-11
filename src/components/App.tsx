@@ -1,10 +1,10 @@
 import {CocktailProvider} from "../contexts/CocktailContext.tsx";
-import LandingPage from "./LandingPage.tsx";
+import {Outlet} from "react-router-dom";
 
 export function App() {
     return (
         <CocktailProvider>
-            <LandingPage/>
+            <Outlet/>
         </CocktailProvider>
     );
 }
