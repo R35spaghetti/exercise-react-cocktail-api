@@ -3,6 +3,7 @@ import useFetchRandomCocktail from '../hooks/useFetchRandomCocktail';
 import {IDrink} from "../interface.ts";
 import useSearchCocktails from "../hooks/useSearchCocktails.ts";
 import useFindCocktailById from "../hooks/useFindCocktailById.ts";
+import {useParams} from "react-router-dom";
 
 interface ICocktailContextProps {
     randomCocktail: IDrink | null;
@@ -15,19 +16,28 @@ interface ICocktailContextProps {
 
     cocktail: IDrink | null;
     loadingCocktailId: boolean;
-    cocktailId: Dispatch<number>;
 
 }
 
 export const CocktailContext = createContext<ICocktailContextProps | undefined>(undefined);
 
 export const CocktailProvider: React.FC<{ children: ReactNode }> = ({children}) => {
-    const {randomCocktail,randomLoading,setRandomTrigger} = useFetchRandomCocktail();
-    const{searchCocktails, searchLoading,setSearchCocktailName} = useSearchCocktails();
-    const {cocktail, loadingCocktailId, cocktailId} = useFindCocktailById();
+    const {randomCocktail, randomLoading, setRandomTrigger} = useFetchRandomCocktail();
+    const {searchCocktails, searchLoading, setSearchCocktailName} = useSearchCocktails();
+    const {cocktailId} = useParams();
+    const {cocktail, loadingCocktailId} = useFindCocktailById(cocktailId || '');
 
     return (
-        <CocktailContext.Provider value={{randomCocktail, randomLoading, setRandomTrigger, searchCocktails, searchLoading, setSearchCocktailName, cocktail, loadingCocktailId, cocktailId}}>
+        <CocktailContext.Provider value={{
+            randomCocktail,
+            randomLoading,
+            setRandomTrigger,
+            searchCocktails,
+            searchLoading,
+            setSearchCocktailName,
+            cocktail,
+            loadingCocktailId
+        }}>
             {children}
         </CocktailContext.Provider>
     );

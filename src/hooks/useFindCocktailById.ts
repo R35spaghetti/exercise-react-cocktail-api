@@ -1,16 +1,15 @@
 import {useEffect, useState} from "react";
 import {IDrink} from "../interface.ts";
 
-const useFindCocktailById = () => {
+const useFindCocktailById = (cocktailId: string) => {
     const [cocktail, setCocktail] = useState<IDrink | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
-    const [cocktailId, setCocktailId] = useState<number>(0);
 
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=${cocktailId}`);
+                const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`);
                 const data = await response.json();
                 setCocktail(data.drinks[0]);
             } catch (error) {
@@ -23,6 +22,6 @@ const useFindCocktailById = () => {
         fetchData().catch(error => console.error("error fetching data", error));
     }, [cocktailId]);
 
-    return {cocktail: cocktail, loadingCocktailId: loading, cocktailId: setCocktailId}
+    return {cocktail: cocktail, loadingCocktailId: loading}
 }
 export default useFindCocktailById;
