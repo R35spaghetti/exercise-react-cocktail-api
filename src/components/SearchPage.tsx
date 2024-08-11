@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {useCocktail} from "../hooks/useCocktail.ts";
+import {Link} from "react-router-dom";
 
 const SearchPage: React.FC = () => {
     const {searchCocktails, searchLoading, setSearchCocktailName} = useCocktail();
@@ -47,8 +48,9 @@ const SearchPage: React.FC = () => {
             </div>
             <ul className="similiar-cocktails-list">
                 {currentItems.map((cocktail) => (
-                    <li key={cocktail.idDrink}>{cocktail.strDrink}</li>
-                ))}
+                    <li key={cocktail.idDrink}><Link to={`/cocktail/${cocktail.idDrink}`}>{cocktail.strDrink}</Link></li>
+
+            ))}
             </ul>
 
         </article>

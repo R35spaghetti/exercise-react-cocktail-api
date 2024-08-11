@@ -1,5 +1,6 @@
 import React from "react";
 import {useCocktail} from "../hooks/useCocktail.ts";
+import {Link} from "react-router-dom";
 
 const LandingPage: React.FC = () => {
     const {randomCocktail, randomLoading, setRandomTrigger} = useCocktail();
@@ -15,6 +16,7 @@ const LandingPage: React.FC = () => {
             <h1>{randomCocktail.strDrink}</h1>
             <img src={randomCocktail.strDrinkThumb} alt={randomCocktail.strDrink}/>
             <button onClick={() => setRandomTrigger(prev => !prev)}>Get another drink</button>
+            <Link to={`/cocktail/${randomCocktail.idDrink}`}>See more</Link>
         </article>
     );
 };
