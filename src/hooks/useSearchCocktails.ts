@@ -11,7 +11,7 @@ const useSearchCocktails = () => {
             try {
                 const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`);
                 const data = await response.json();
-                setCocktails(data.drinks[0]);
+                setCocktails(data.drinks);
             } catch (error) {
                 console.error("Error fetching data:", error);
             } finally {
