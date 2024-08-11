@@ -22,6 +22,6 @@ const useFetchRandomCocktail = () => {
         fetchData().catch(error => console.error("error fetching data", error));
     }, [trigger]);
 
-    return {cocktail, loading, setTrigger};
+    return {randomCocktail: cocktail, randomLoading: loading, setRandomTrigger: setTrigger};
 };
 export default useFetchRandomCocktail;
