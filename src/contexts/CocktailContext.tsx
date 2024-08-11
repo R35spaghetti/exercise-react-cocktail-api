@@ -8,7 +8,7 @@ interface ICocktailContextProps {
     randomLoading: boolean;
     setRandomTrigger: React.Dispatch<React.SetStateAction<boolean>>;
 
-    searchCocktails: IDrink[] | null;
+    searchCocktails: IDrink[];
     searchLoading: boolean;
     setSearchCocktailName: React.Dispatch<React.SetStateAction<string>>;
 
