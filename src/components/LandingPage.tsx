@@ -11,11 +11,11 @@ const LandingPage: React.FC = () => {
     }
 
     return (
-        <div className="landing-page">
+        <article className="landing-page">
             <h1>{cocktail.strDrink}</h1>
             <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink}/>
             <button onClick={() => setTrigger(prev => !prev)}>Get another drink</button>
-        </div>
+        </article>
     );
 };
 export default LandingPage;
