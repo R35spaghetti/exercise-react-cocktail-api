@@ -9,5 +9,4 @@ export interface IDrink
     strGlass: string;
     strInstructions: string;
     strDrinkThumb: string;
-    strMeasurement1: string;
 }
