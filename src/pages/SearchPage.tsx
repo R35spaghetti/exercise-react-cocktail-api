@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {useCocktail} from "../hooks/useCocktail.ts";
 import {Link} from "react-router-dom";
+import {useGoHome} from "../hooks";
 
 export const SearchPage: React.FC = () => {
     const {searchCocktails, searchLoading, setSearchCocktailName} = useCocktail();
@@ -20,6 +21,7 @@ export const SearchPage: React.FC = () => {
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = searchCocktails.slice(indexOfFirstItem, indexOfLastItem);
+    const {goHome} = useGoHome();
 
 
     if (searchLoading) {
@@ -27,8 +29,10 @@ export const SearchPage: React.FC = () => {
     } else if (!searchCocktails || searchCocktails.length === 0) {
         return <div>No cocktails found</div>
     }
+
     return (
         <article className="search-page">
+            <button onClick={goHome}>Home</button>
             <form onSubmit={handleSubmit} className="searchbar">
                 <input
                     type="text"
@@ -48,9 +52,10 @@ export const SearchPage: React.FC = () => {
             </div>
             <ul className="similiar-cocktails-list">
                 {currentItems.map((cocktail) => (
-                    <li key={cocktail.idDrink}><Link to={`/cocktail/${cocktail.idDrink}`}>{cocktail.strDrink}</Link></li>
+                    <li key={cocktail.idDrink}><Link to={`/cocktail/${cocktail.idDrink}`}>{cocktail.strDrink}</Link>
+                    </li>
 
-            ))}
+                ))}
             </ul>
 
         </article>
