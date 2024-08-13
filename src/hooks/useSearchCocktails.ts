@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {IDrink} from "../interface.ts";
 
-const useSearchCocktails = () => {
+export const useSearchCocktails = () => {
     const [cocktails, setCocktails] = useState<IDrink[] >([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [cocktailName, setCocktailName] = useState<string>("");
@@ -25,4 +25,3 @@ const useSearchCocktails = () => {
     return {searchCocktails: cocktails, searchLoading: loading, setSearchCocktailName: setCocktailName};
 
 };
-export default useSearchCocktails;

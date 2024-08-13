@@ -1,7 +1,7 @@
 import React from "react";
 import {useCocktail} from "../hooks/useCocktail.ts";
 
-const CocktailDetailsPage: React.FC = () => {
+export const CocktailDetailsPage: React.FC = () => {
     const {cocktail, loadingCocktailId} = useCocktail();
 
 
@@ -37,5 +37,4 @@ const CocktailDetailsPage: React.FC = () => {
 
     )
 }
-export default CocktailDetailsPage;
 

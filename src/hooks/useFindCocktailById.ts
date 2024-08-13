@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {IDrink} from "../interface.ts";
 
-const useFindCocktailById = (cocktailId: string) => {
+export const useFindCocktailById = (cocktailId: string) => {
     const [cocktail, setCocktail] = useState<IDrink | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -24,4 +24,3 @@ const useFindCocktailById = (cocktailId: string) => {
 
     return {cocktail: cocktail, loadingCocktailId: loading}
 }
-export default useFindCocktailById;

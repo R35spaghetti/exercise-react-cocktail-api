@@ -1,8 +1,7 @@
 import React, {createContext, Dispatch, ReactNode} from 'react';
-import useFetchRandomCocktail from '../hooks/useFetchRandomCocktail';
+import {useSearchCocktails,useFindCocktailById,useFetchRandomCocktail} from "../hooks/";
 import {IDrink} from "../interface.ts";
-import useSearchCocktails from "../hooks/useSearchCocktails.ts";
-import useFindCocktailById from "../hooks/useFindCocktailById.ts";
+
 import {useParams} from "react-router-dom";
 
 interface ICocktailContextProps {

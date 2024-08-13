@@ -2,7 +2,7 @@ import React from "react";
 import {useCocktail} from "../hooks/useCocktail.ts";
 import {Link} from "react-router-dom";
 
-const LandingPage: React.FC = () => {
+export const LandingPage: React.FC = () => {
     const {randomCocktail, randomLoading, setRandomTrigger} = useCocktail();
 
     if (randomLoading) {
@@ -20,4 +20,3 @@ const LandingPage: React.FC = () => {
         </article>
     );
 };
-export default LandingPage;

@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {IDrink} from "../interface.ts";
 
-const useFetchRandomCocktail = () => {
+export const useFetchRandomCocktail = () => {
     const [cocktail, setCocktail] = useState<IDrink | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [trigger, setTrigger] = useState<boolean>(false);
@@ -24,4 +24,3 @@ const useFetchRandomCocktail = () => {
 
     return {randomCocktail: cocktail, randomLoading: loading, setRandomTrigger: setTrigger};
 };
-export default useFetchRandomCocktail;

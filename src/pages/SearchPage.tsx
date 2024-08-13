@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {useCocktail} from "../hooks/useCocktail.ts";
 import {Link} from "react-router-dom";
 
-const SearchPage: React.FC = () => {
+export const SearchPage: React.FC = () => {
     const {searchCocktails, searchLoading, setSearchCocktailName} = useCocktail();
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
@@ -56,4 +56,3 @@ const SearchPage: React.FC = () => {
         </article>
     );
 }
-export default SearchPage;

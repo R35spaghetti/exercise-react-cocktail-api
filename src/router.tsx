@@ -1,8 +1,6 @@
 import {createBrowserRouter, createRoutesFromElements, Route} from "react-router-dom";
 import {App} from "./components";
-import LandingPage from "./components/LandingPage.tsx";
-import SearchPage from "./components/SearchPage.tsx";
-import CocktailDetailsPage from "./components/CocktailDetailsPage.tsx";
+import {LandingPage, SearchPage, CocktailDetailsPage} from "./pages";
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
