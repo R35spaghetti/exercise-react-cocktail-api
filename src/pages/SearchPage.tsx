@@ -31,9 +31,9 @@ export const SearchPage: React.FC = () => {
     }
 
     return (
-        <article className="search-page">
+        <article className="cocktail-cocktailSearch-container">
             <button onClick={goHome}>Home</button>
-            <form onSubmit={handleSubmit} className="searchbar">
+            <form onSubmit={handleSubmit} className="cocktail-search-searchbar">
                 <input
                     type="text"
                     value={searchQuery}
@@ -43,14 +43,14 @@ export const SearchPage: React.FC = () => {
                 <button type="submit">Search</button>
             </form>
 
-            <div className="search-buttons">
+            <div className="cocktail-search-buttons">
                 {[...Array(Math.ceil(searchCocktails.length / itemsPerPage))].map((_, index) => (
                     <button key={index} onClick={() => handleChangePage(index + 1)}>
                         Page {index + 1}
                     </button>
                 ))}
             </div>
-            <ul className="similiar-cocktails-list">
+            <ul className="cocktail-search-similar-cocktails-list">
                 {currentItems.map((cocktail) => (
                     <li key={cocktail.idDrink}><Link to={`/cocktail/${cocktail.idDrink}`}>{cocktail.strDrink}</Link>
                     </li>

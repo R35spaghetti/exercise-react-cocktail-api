@@ -19,7 +19,7 @@ export const LandingPage: React.FC = () => {
     }
 
     return (
-        <article className="landing-page">
+        <article className="cocktail-cocktailLanding-container">
             <h1>{randomCocktail.strDrink}</h1>
             <img src={randomCocktail.strDrinkThumb} alt={randomCocktail.strDrink}/>
             <button onClick={() => setRandomTrigger(prev => !prev)}>Get another drink</button>

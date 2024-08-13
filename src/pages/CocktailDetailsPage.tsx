@@ -22,17 +22,23 @@ export const CocktailDetailsPage: React.FC = () => {
 
 
     return (
-        <article className="cocktail-card">
-            <h2>category: {cocktail.strCategory}</h2>
-            <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink}/>
-            <p>tags: {cocktail.strTags}</p>
-            <p>glas: {cocktail.strGlass}</p>
-            <h3>Ingredients:</h3>
-            <div className="ingredients-list">
-                {measurementsCocktail.map((entry) => (<p key={entry.key}>{entry.value}</p>))}
-                {ingredientsCocktail.map((entry) => (<p key={entry.key}>{entry.value}</p>))}
+        <article className="cocktail-cocktailDetails-container">
+            <div className="cocktail-details-info-container">
+                <button onClick={goHome}>Home</button>
+                <h2>Category: {cocktail.strCategory}</h2>
+                <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink}/>
+                <p><strong>Tags:</strong> {cocktail.strTags}</p>
+                <p><strong>Glas:</strong> {cocktail.strGlass}</p>
             </div>
-            <button onClick={goHome}>Home</button>
+            <h3>Ingredients</h3>
+            <section className="cocktail-details-recipe-container">
+                <div className="cocktail-details-ingredients-list-container">
+                    {ingredientsCocktail.map((entry) => (<p key={entry.key}>{entry.value}</p>))}
+                </div>
+                <div className="cocktail-details-measurements-list-container">
+                    {measurementsCocktail.map((entry) => (<p key={entry.key}>{entry.value}</p>))}
+                </div>
+            </section>
 
         </article>
 
