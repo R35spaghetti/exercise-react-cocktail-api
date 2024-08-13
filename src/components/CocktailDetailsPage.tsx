@@ -27,8 +27,8 @@ const CocktailDetailsPage: React.FC = () => {
             <p>glas: {cocktail.strGlass}</p>
             <h3>Ingredients:</h3>
             <div className="ingredients-list">
-                {measurementsCocktail.map((entry) => (<p>{entry.value}</p>))}
-                {ingredientsCocktail.map((entry) => (<p>{entry.value}</p>))}
+                {measurementsCocktail.map((entry) => (<p key={entry.key}>{entry.value}</p>))}
+                {ingredientsCocktail.map((entry) => (<p key={entry.key}>{entry.value}</p>))}
             </div>
 
 
