@@ -32,9 +32,14 @@ export const useFetchHook = () => {
                 }
                 const response = await fetch(url);
                 const moreData = await response.json();
-                setMoreData(moreData.drinks);
-                setData(moreData.drinks[0]);
-                setIsLoading(false);
+                if (moreData && moreData.drinks) {
+                    setMoreData(moreData.drinks);
+                    setData(moreData.drinks[0]);
+                    setIsLoading(false);
+
+                } else {
+                    setIsLoading(false);
+                }
             } catch (error) {
                 console.error("Error fetching data:", error);
                 setIsLoading(false)
