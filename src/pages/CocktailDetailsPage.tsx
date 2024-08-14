@@ -3,20 +3,20 @@ import {useCocktail} from "../hooks/useCocktail.ts";
 import {useGoHome} from "../hooks";
 
 export const CocktailDetailsPage: React.FC = () => {
-    const {cocktail, loadingCocktailId} = useCocktail();
+    const {data, isLoading} = useCocktail();
     const {goHome} = useGoHome();
 
-    if (loadingCocktailId) {
+    if (isLoading) {
         return <div>Loading...</div>;
-    } else if (!cocktail) {
+    } else if (!data) {
         return <div>No cocktails found</div>
     }
 
-    const measurementsCocktail = Object.entries(cocktail)
+    const measurementsCocktail = Object.entries(data)
         .filter(([key]) => key.startsWith("strMeasure"))
         .map(([key, value]) => ({key, value}));
 
-    const ingredientsCocktail = Object.entries(cocktail)
+    const ingredientsCocktail = Object.entries(data)
         .filter(([key]) => key.startsWith("strIngredient"))
         .map(([key, value]) => ({key, value}));
 
@@ -25,10 +25,10 @@ export const CocktailDetailsPage: React.FC = () => {
         <article className="cocktail-cocktailDetails-container">
             <div className="cocktail-details-info-container">
                 <button onClick={goHome}>Home</button>
-                <h2>Category: {cocktail.strCategory}</h2>
-                <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink}/>
-                <p><strong>Tags:</strong> {cocktail.strTags}</p>
-                <p><strong>Glas:</strong> {cocktail.strGlass}</p>
+                <h2>Category: {data.strCategory}</h2>
+                <img src={data.strDrinkThumb} alt={data.strDrink}/>
+                <p><strong>Tags:</strong> {data.strTags}</p>
+                <p><strong>Glas:</strong> {data.strGlass}</p>
             </div>
             <h3>Ingredients</h3>
             <section className="cocktail-details-recipe-container">

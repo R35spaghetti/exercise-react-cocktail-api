@@ -4,14 +4,14 @@ import {Link} from "react-router-dom";
 import {useGoHome} from "../hooks";
 
 export const SearchPage: React.FC = () => {
-    const {searchCocktails, searchLoading, setSearchCocktailName} = useCocktail();
+    const {moreData, isLoading, setSearchQuery} = useCocktail();
     const [currentPage, setCurrentPage] = useState(1);
-    const [searchQuery, setSearchQuery] = useState("");
+    const [searchQuery, setQuery] = useState("");
     const itemsPerPage = 10;
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setSearchCocktailName(searchQuery);
+        setSearchQuery(searchQuery);
     };
     const handleChangePage = (pageNumber: number) => {
         setCurrentPage(pageNumber);
@@ -20,13 +20,13 @@ export const SearchPage: React.FC = () => {
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = searchCocktails.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = moreData.slice(indexOfFirstItem, indexOfLastItem);
     const {goHome} = useGoHome();
 
 
-    if (searchLoading) {
+    if (isLoading) {
         return <div>Loading...</div>;
-    } else if (!searchCocktails || searchCocktails.length === 0) {
+    } else if (!moreData || moreData.length === 0) {
         return <div>No cocktails found</div>
     }
 
@@ -37,14 +37,14 @@ export const SearchPage: React.FC = () => {
                 <input
                     type="text"
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={(e) => setQuery(e.target.value)}
                     placeholder="Search for a cocktail..."
                 />
                 <button type="submit">Search</button>
             </form>
 
             <div className="cocktail-search-buttons">
-                {[...Array(Math.ceil(searchCocktails.length / itemsPerPage))].map((_, index) => (
+                {[...Array(Math.ceil(moreData.length / itemsPerPage))].map((_, index) => (
                     <button key={index} onClick={() => handleChangePage(index + 1)}>
                         Page {index + 1}
                     </button>

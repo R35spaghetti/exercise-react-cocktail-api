@@ -1,41 +1,29 @@
 import React, {createContext, Dispatch, ReactNode} from 'react';
-import {useSearchCocktails,useFindCocktailById,useFetchRandomCocktail} from "../hooks/";
 import {IDrink} from "../interface.ts";
-
-import {useParams} from "react-router-dom";
+import {useFetchHook} from "../hooks";
 
 interface ICocktailContextProps {
-    randomCocktail: IDrink | null;
-    randomLoading: boolean;
-    setRandomTrigger: Dispatch<React.SetStateAction<boolean>>;
-
-    searchCocktails: IDrink[];
-    searchLoading: boolean;
-    setSearchCocktailName: Dispatch<React.SetStateAction<string>>;
-
-    cocktail: IDrink | null;
-    loadingCocktailId: boolean;
-
+    data: IDrink | null;
+    moreData: IDrink[];
+    isLoading: boolean;
+    setTrigger: Dispatch<React.SetStateAction<boolean>>;
+    setSearchQuery: Dispatch<React.SetStateAction<string>>;
 }
 
 export const CocktailContext = createContext<ICocktailContextProps | undefined>(undefined);
 
 export const CocktailProvider: React.FC<{ children: ReactNode }> = ({children}) => {
-    const {randomCocktail, randomLoading, setRandomTrigger} = useFetchRandomCocktail();
-    const {searchCocktails, searchLoading, setSearchCocktailName} = useSearchCocktails();
-    const {cocktailId} = useParams();
-    const {cocktail, loadingCocktailId} = useFindCocktailById(cocktailId || '');
+
+    const {data, moreData, isLoading, setTrigger, setSearchQuery} = useFetchHook();
+
 
     return (
         <CocktailContext.Provider value={{
-            randomCocktail,
-            randomLoading,
-            setRandomTrigger,
-            searchCocktails,
-            searchLoading,
-            setSearchCocktailName,
-            cocktail,
-            loadingCocktailId
+            data,
+            isLoading,
+            setTrigger,
+            moreData,
+            setSearchQuery,
         }}>
             {children}
         </CocktailContext.Provider>
