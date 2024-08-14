@@ -36,14 +36,12 @@ button {
 
 .cocktail-details-ingredients-list-container {
     border: aliceblue solid 1px;
-    justify-items: center;
     padding: 5px;
 
 }
 
 .cocktail-details-measurements-list-container {
     border: aliceblue solid 1px;
-    justify-items: center;
     padding: 5px;
 }
 
