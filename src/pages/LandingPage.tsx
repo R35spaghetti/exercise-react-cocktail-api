@@ -1,17 +1,17 @@
 import React from "react";
 import {useCocktail} from "../hooks/useCocktail.ts";
 import {useNavigate} from "react-router-dom";
+import {useLoadingData} from "../hooks/useLoadingData.ts";
 
 export const LandingPage: React.FC = () => {
     const {data, isLoading, setTrigger} = useCocktail();
     const navigate = useNavigate();
+    const {condition} = useLoadingData(isLoading,data);
 
-
-    if (isLoading) {
-        return <div>Loading...</div>;
-    } else if (!data) {
-        return <div>No cocktail found</div>
+    if (!data) {
+        return <div>{condition}</div>;
     }
+
     const goSearch = () => {
         navigate("/search");
     }

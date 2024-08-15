@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {useCocktail} from "../hooks/useCocktail.ts";
 import {Link} from "react-router-dom";
 import {useGoHome} from "../hooks";
+import {useLoadingData} from "../hooks/useLoadingData.ts";
 
 export const SearchPage: React.FC = () => {
     const {moreData, isLoading, setSearchQuery} = useCocktail();
@@ -22,12 +23,11 @@ export const SearchPage: React.FC = () => {
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = moreData.slice(indexOfFirstItem, indexOfLastItem);
     const {goHome} = useGoHome();
+    const {condition} = useLoadingData(isLoading, moreData[0]);
 
+    if (!moreData.length) {
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    } else if (!moreData || moreData.length === 0) {
-        return <div>No cocktails found</div>
+        return <div>{condition}</div>;
     }
 
     return (

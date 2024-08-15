@@ -1,17 +1,16 @@
 import React from "react";
 import {useCocktail} from "../hooks/useCocktail.ts";
 import {useGoHome} from "../hooks";
+import {useLoadingData} from "../hooks/useLoadingData.ts";
 
 export const CocktailDetailsPage: React.FC = () => {
     const {data, isLoading} = useCocktail();
     const {goHome} = useGoHome();
+    const {condition} = useLoadingData(isLoading,data);
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    } else if (!data) {
-        return <div>No cocktails found</div>
+    if (!data) {
+        return <div>{condition}</div>;
     }
-
     const measurementsCocktail = Object.entries(data)
         .filter(([key]) => key.startsWith("strMeasure"))
         .map(([key, value]) => ({key, value}));
