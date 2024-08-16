@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import {useCocktail} from "../hooks/useCocktail.ts";
+import {useCocktail} from "../hooks";
 import {Link} from "react-router-dom";
 import {useGoHome} from "../hooks";
-import {useLoadingData} from "../hooks/useLoadingData.ts";
+import {useLoadingData} from "../hooks";
 
 export const SearchPage: React.FC = () => {
     const {moreData, isLoading, setSearchQuery} = useCocktail();

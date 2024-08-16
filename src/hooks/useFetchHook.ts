@@ -12,6 +12,7 @@ export const useFetchHook = () => {
     const {cocktailId} = useParams();
     const location = useLocation();
 
+
     useEffect(() => {
         const fetchData = async () => {
             let url = '';
@@ -27,7 +28,7 @@ export const useFetchHook = () => {
                         url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`;
                         break;
                     default:
-                        break;
+                        return;
 
                 }
                 const response = await fetch(url);

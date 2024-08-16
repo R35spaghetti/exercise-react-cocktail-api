@@ -1,10 +1,10 @@
 import React from "react";
-import {useCocktail} from "../hooks/useCocktail.ts";
+import {useCocktail} from "../hooks";
 import {useGoHome} from "../hooks";
-import {useLoadingData} from "../hooks/useLoadingData.ts";
+import {useLoadingData} from "../hooks";
 
 export const CocktailDetailsPage: React.FC = () => {
-    const {data, isLoading} = useCocktail();
+    const {data, isLoading, addToFavorites} = useCocktail();
     const {goHome} = useGoHome();
     const {condition} = useLoadingData(isLoading,data);
 
@@ -24,6 +24,7 @@ export const CocktailDetailsPage: React.FC = () => {
         <article className="cocktail-cocktailDetails-container">
             <div className="cocktail-details-info-container">
                 <button onClick={goHome}>Home</button>
+                <button onClick={() => addToFavorites(data)}>Add to Favorites</button>
                 <h2>Category: {data.strCategory}</h2>
                 <img src={data.strDrinkThumb} alt={data.strDrink}/>
                 <p><strong>Tags:</strong> {data.strTags}</p>

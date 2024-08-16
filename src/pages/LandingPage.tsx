@@ -1,12 +1,14 @@
 import React from "react";
-import {useCocktail} from "../hooks/useCocktail.ts";
+import {useCocktail} from "../hooks";
 import {useNavigate} from "react-router-dom";
-import {useLoadingData} from "../hooks/useLoadingData.ts";
+import {useLoadingData} from "../hooks";
+import {useGoFavorites} from "../hooks";
 
 export const LandingPage: React.FC = () => {
-    const {data, isLoading, setTrigger} = useCocktail();
+    const {data, isLoading, setTrigger, addToFavorites} = useCocktail();
     const navigate = useNavigate();
     const {condition} = useLoadingData(isLoading,data);
+    const {goFavorites} = useGoFavorites();
 
     if (!data) {
         return <div>{condition}</div>;
@@ -26,6 +28,8 @@ export const LandingPage: React.FC = () => {
             <button onClick={() => setTrigger(prev => !prev)}>Get another drink</button>
             <button onClick={goSeeMore}>See more</button>
             <button onClick={goSearch}>Search</button>
+            <button onClick={goFavorites}>Favorites</button>
+            <button onClick={() => addToFavorites(data)}>Add to Favorites</button>
         </article>
     );
 };
