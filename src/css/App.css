@@ -73,3 +73,9 @@ button {
     gap: 20px;
     padding: 10px;
 }
+.FavoritesPage-container
+{
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}

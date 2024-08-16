@@ -1,13 +1,14 @@
 import React from 'react';
 import {useCocktail} from "../hooks";
 import {useGoHome} from "../hooks";
+import "../css/App.css"
 
 export const FavoritesPage: React.FC = () => {
     const {favorites, removeFromFavorites} = useCocktail();
     const {goHome} = useGoHome();
 
     return (
-        <div>
+        <article className="FavoritesPage-container">
             <h2>Favorite Cocktails</h2>
             <button onClick={goHome}>Home</button>
             {favorites.map((favorite) => (
@@ -16,6 +17,6 @@ export const FavoritesPage: React.FC = () => {
                     <button onClick={() => removeFromFavorites(favorite.strDrink)}>Remove from Favorites</button>
                 </div>
             ))}
-        </div>
+        </article>
     );
 }
