@@ -1,6 +1,5 @@
 import React from 'react';
-import {useCocktail} from "../hooks";
-import {useGoHome} from "../hooks";
+import {useCocktail, useGoHome} from "../hooks";
 import "../css/App.css"
 
 export const FavoritesPage: React.FC = () => {

@@ -1,13 +1,14 @@
 import React, {useState} from "react";
-import {useCocktail} from "../hooks";
+import {useCocktail, useGoHome, useLoadingData} from "../hooks";
 import {Link} from "react-router-dom";
-import {useGoHome} from "../hooks";
-import {useLoadingData} from "../hooks";
+
 
 export const SearchPage: React.FC = () => {
     const {moreData, isLoading, setSearchQuery} = useCocktail();
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setQuery] = useState("");
+    const {goHome} = useGoHome();
+    const {condition} = useLoadingData(isLoading, moreData[0]);
     const itemsPerPage = 10;
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,12 +22,11 @@ export const SearchPage: React.FC = () => {
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = moreData.slice(indexOfFirstItem, indexOfLastItem);
-    const {goHome} = useGoHome();
-    const {condition} = useLoadingData(isLoading, moreData[0]);
+    const currentItems = Array.isArray(moreData)
+        ? moreData.slice(indexOfFirstItem, indexOfLastItem) || []
+        : [];
 
     if (!moreData.length) {
-
         return <div>{condition}</div>;
     }
 

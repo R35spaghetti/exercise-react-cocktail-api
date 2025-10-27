@@ -1,8 +1,6 @@
 import React from "react";
-import {useCocktail} from "../hooks";
+import {useCocktail, useLoadingData, useGoFavorites} from "../hooks";
 import {useNavigate} from "react-router-dom";
-import {useLoadingData} from "../hooks";
-import {useGoFavorites} from "../hooks";
 
 export const LandingPage: React.FC = () => {
     const {data, isLoading, setTrigger, addToFavorites} = useCocktail();

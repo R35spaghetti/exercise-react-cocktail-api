@@ -1,7 +1,5 @@
 import React from "react";
-import {useCocktail} from "../hooks";
-import {useGoHome} from "../hooks";
-import {useLoadingData} from "../hooks";
+import {useCocktail, useGoHome, useLoadingData} from "../hooks";
 
 export const CocktailDetailsPage: React.FC = () => {
     const {data, isLoading, addToFavorites} = useCocktail();
